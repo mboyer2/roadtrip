@@ -1,0 +1,11 @@
+{
+  "name": "roadtrip",
+  "version": "1.0.0",
+  "description": "",
+  "main": "roadTrip-Server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
