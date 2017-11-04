@@ -28,6 +28,10 @@ app.get('/San-Francisco', function(request, response){
 	response.sendFile('./sanfrancisco.html', {root:'./'})
 })
 
+app.get('/cargo-validator', function(request, response){
+	response.sendFile('/cargo-validator.html', {root:'./'})
+})
+
 
 
 app.listen(8080, function(){

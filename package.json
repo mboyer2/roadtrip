@@ -1,11 +1,23 @@
 {
   "name": "roadtrip",
   "version": "1.0.0",
-  "description": "",
   "main": "roadTrip-Server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mboyer2/roadtrip.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mboyer2/roadtrip/issues"
+  },
+  "homepage": "https://github.com/mboyer2/roadtrip#readme",
+  "description": "",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2"
+  }
 }
