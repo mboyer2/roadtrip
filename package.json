@@ -15,9 +15,10 @@
     "url": "https://github.com/mboyer2/roadtrip/issues"
   },
   "homepage": "https://github.com/mboyer2/roadtrip#readme",
-  "description": "",
   "dependencies": {
     "body-parser": "^1.18.2",
     "express": "^4.16.2"
-  }
+  },
+  "devDependencies": {},
+  "description": ""
 }

@@ -33,6 +33,11 @@ var mainVm = new Vue({
 			weight: 1,
 			count: 0,
 		},
+		// bgColor: {backgroundColor:'white'},
+		isValid: true,
+
+		message: ''
+	
 	},
 	computed: {
 			totalCost: function() {
@@ -44,22 +49,12 @@ var mainVm = new Vue({
 				let y = this.camera.displayWeight + this.quarters.displayWeight + this.spare.displayWeight + this.chips.displayWeight
 				return y
 			},
-			bgColor: function() {
-				if (this.totalCost>200 || this.totalWeight>200) {
-					return {backgroundColor:'red'};
-				} else {
-					return {backgroundColor:'white'};
-				}
-			},
-
-			
-
-
 		},
 	
 	methods:{
 
 		subtract: function(thing){
+			var that=this
 			if (this[thing].count>0){
 				this[thing].count --	
 			}
@@ -68,19 +63,49 @@ var mainVm = new Vue({
 			}
 			if (this[thing].displayWeight>0){
 				this[thing].displayWeight=this[thing].displayWeight-this[thing].weight	
-			}
 
+			$.post(
+				'/validate', 
+				{displayWeight: this[thing].displayWeight, displayCost: this[thing].displayCost}, function(data,status){
+					
+					console.log('its data!', data)
+					console.log(status)
+
+					// figure this out
+					that.isValid=true 
+					that.message = data
+					
+				}).fail(function(data){
+					console.log(data)
+					that.isValid = false
+
+					that.message = data.responseText
+				})
+			}
 		},
 
 		add: function(thing){
+			var that=this
 			this[thing].count ++
 			this[thing].displayCost = this[thing].displayCost + this[thing].cost
-			this[thing].displayWeight = this[thing].displayWeight + this[thing].weight	
+			this[thing].displayWeight = this[thing].displayWeight + this[thing].weight
+
+			$.post(
+				'/validate', 
+				{displayWeight: this[thing].displayWeight, displayCost: this[thing].displayCost}, function(data,status){
+					
+					console.log('its data!', data)
+					console.log(status)
+
+
+					that.isValid=true 
+					that.message = data
+
+			}).fail(function(data){
+					console.log(data)
+					that.isValid = false
+					that.message = data.responseText
+				})
 		}
-
-		
-
-
-
 	}
 })
